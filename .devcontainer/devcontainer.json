@@ -1,5 +1,6 @@
 {
   "service": "dev",
   "dockerComposeFile": "docker-compose.yml",
-  "postCreateCommand": "npm install"
+  "postCreateCommand": "npm install",
+  "workspaceFolder": "/workspace"
 }

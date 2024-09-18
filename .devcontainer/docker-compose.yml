@@ -9,6 +9,8 @@ services:
     environment:
       DISPLAY: ":14"
       LIBGL_ALWAYS_INDIRECT: 0
+    volumes:
+      - ../:/workspace
     volumes_from:
       - x11-bridge:rw
     depends_on:
