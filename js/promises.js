@@ -56,6 +56,10 @@ const clickBuyShoesCallback = (e) => {
   // Use .then() to react to when the order is delivered, and send the
   // delivery message to the Jumbotron
   // Use .catch() to send order rejection messages to the Jumbotron.
+  placedOrder
+    .then((response) => sendToJumbotron(response))
+
+    .catch((error) => sendToJumbotron(error));
 
   // Uncomment below 👇 to place your order and send the results
   // to the Jumbotron.
@@ -87,6 +91,7 @@ const fetchFromItunesSendResponseCallback = () => {
   fetch('https://itunes.apple.com/search?term=hoobastank')
   .then((response) => {
     // @todo, send the response to the Jumbotron.
+    sendToJumbotron(response);
   });
 }
 
@@ -101,8 +106,8 @@ const fetchFromItunesSendJsonCallback = () => {
   // to the Jumbotron.
   //@see   // @see https://www.javascripttutorial.net/javascript-fetch-api/
   fetch('https://itunes.apple.com/search?term=hoobastank')
-    //.then((res) => ??? do something here)
-    // .then((json) => ??? do something here);
+    .then((response) => response.json())
+    .then((json) => sendToJumbotron(json));
 }
 
 // The need to chain two uses of then() might be confusing. It would be normal to ask
@@ -124,10 +129,15 @@ const fetchFromYesNoSendResponseCallback = () => {
   // @todo,similar to fetchFromItunesSendResponseCallback()
   // fetch https://yesno.wtf/api
   // send the response to the jumbotron
+  fetch('https://yesno.wtf/api')
+    .then((res) => sendToJumbotron(res));
 }
 
 const fetchFromYesNoSendJsonCallback = () => {
   // @todo simlar to fetchFromItunesSendJsonCallback()
   // fetch  https://yesno.wtf/api
   // send the parsed JSON to the jumbotron.
+  fetch('https://yesno.wtf/api')
+    .then((res) => res.json())
+    .then((j) => sendToJumbotron(j));
 }
