@@ -62,20 +62,12 @@ const clickBuyShoesCallback = (e) => {
     .catch((error) => sendToJumbotron(error));
 
   // Uncomment below 👇 to place your order and send the results
-  // to the Jumbotron.
-  // placedOrder
-  //   .then((response) => {
-  //     sendToJumbotron(response);
-  //   })
-  //   .catch((error) => {
-  //     sendToJumbotron(error);
-  //   });
 
-    // @todo keep this sendToJumbotron at the bottom of the function.
-    // Notice how it shows up in the Jumbotron before the delivery
-    // message, even though the code appears later. That's because Promises
-    // don't prevent other code from executing as they work.
-    sendToJumbotron('I am waiting for my shoes');
+  // @todo keep this sendToJumbotron at the bottom of the function.
+  // Notice how it shows up in the Jumbotron before the delivery
+  // message, even though the code appears later. That's because Promises
+  // don't prevent other code from executing as they work.
+  sendToJumbotron('I am waiting for my shoes');
 }
 
 //** fetch() grabs the contents of a remote resource.
@@ -89,10 +81,10 @@ const fetchFromItunesSendResponseCallback = () => {
   // Jumbotron.
   // @see https://www.javascripttutorial.net/javascript-fetch-api/
   fetch('https://itunes.apple.com/search?term=hoobastank')
-  .then((response) => {
-    // @todo, send the response to the Jumbotron.
-    sendToJumbotron(response);
-  });
+    .then((response) => {
+      // @todo, send the response to the Jumbotron.
+      sendToJumbotron(response);
+    });
 }
 
 const fetchFromItunesSendJsonCallback = () => {
@@ -139,5 +131,6 @@ const fetchFromYesNoSendJsonCallback = () => {
   // send the parsed JSON to the jumbotron.
   fetch('https://yesno.wtf/api')
     .then((res) => res.json())
-    .then((j) => sendToJumbotron(j));
+    .then((j) => sendToJumbotron(j))
+    .catch((error) => console.warn("There is an error", error));
 }

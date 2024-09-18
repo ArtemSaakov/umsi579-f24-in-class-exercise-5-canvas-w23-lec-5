@@ -7,8 +7,8 @@
 const sendMessageIn2SecondsCallback = () => {
   // @todo This sends a message to the Jumbotron, but it should
   // not show up until 2 seconds. How would we do this?
-  sendToJumbotron('Message Pending');
   setTimeout(() => sendToJumbotron('I should show up in two seconds'), 2000);
+  sendToJumbotron('Message Pending');
 
   // Start by sending "Message Pending" to jumbotron,
   // then two seconds later, use setTimeout to update the
