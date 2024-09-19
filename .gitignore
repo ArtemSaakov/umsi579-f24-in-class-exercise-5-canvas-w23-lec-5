@@ -1,5 +1,5 @@
-.DS_Store
-cypress/screenshots/
-cypress/videos/
-node_modules
-.idea
+*
+*/*
+!js/*
+js/script.js
+js/dont_change/
